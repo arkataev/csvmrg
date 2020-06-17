@@ -12,6 +12,27 @@ pip install -r requirements.txt --target csv_merge
 python csv_merge {path_to_csv_folder} [--output] [--settings]
 ``` 
 
+### Example
+```bash
+python csvmrg tests/data --output csv  
+```
+Merge csv files from `tests/data` folder into a single .csv file and save it into current directory
+
+```bash
+python csvmrg tests/data > data.txt
+```
+Pass merge output into data.txt files
+
+```bash
+python csvmrg tests/data | python my_script.py
+```
+Pass merge output into python script as input data
+
+```bash
+python csvmrg tests/data --settings=custom_settings.py
+```
+Use custom parsing configuration to tweak utility
+
 ### Settings
 
 `HUMAN_READABLE_DATE` - Format date to more be more readable
