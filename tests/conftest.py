@@ -1,23 +1,33 @@
-import csv
 import os
 
 import pytest
 
-import settings
-from handler import HandlerManager
+from src.handler import Manager
+from src.mapper import Remapper, RemappingConfig
+from . import settings
 
 
 @pytest.fixture
 def handler():
-    return HandlerManager()
+    m = Manager(settings.MAPPING['handlers'])
+    yield m
+    m.reset_handlers()
 
 
 @pytest.fixture
-def csv_rows():
-    files = (open(entry.path) for entry in os.scandir(settings.DATA_FOLDER))
-    csv_dicts = (csv.DictReader(f) for f in files)
+def mapper():
+    conf = RemappingConfig()
+    conf.handlers = settings.MAPPING['handlers']
+    conf.keys = settings.MAPPING['keys']
+    conf.formatters = settings.MAPPING['formatters']
 
-    yield (row for reader in csv_dicts for row in reader)
+    return Remapper(conf)
+
+
+@pytest.fixture
+def files():
+    files = (open(entry.path) for entry in os.scandir(settings.DATA_FOLDER))
+    yield files
 
     for f in files:
         f.close()

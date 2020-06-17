@@ -1,21 +1,28 @@
-# Default folder path where data files are placed
-HUMAN_READABLE_DATE = '%d %b %Y %H:%M:%S%z'
+## CSV Merger Utility
 
-CSV_FORMAT_PARAMS = {
-    'delimiter': ','
-}
+Using this utility you can easily merge multiple .csv files into a single stream or .csv file.
 
-# Currencies mapping
-CURRENCY = {
-    'EUR': {
-        'alias': ('euro', 'eur'),
-    },
-    'USD': {
-        'alias': ('dollar', 'usd'),
-    }
-}
+### Requirements
+* Python 3.7
 
+### Installing and Using
+```bash
+pip install -r requirements.txt --target csv_merge
 
+python csv_merge {path_to_csv_folder} [--output] [--settings]
+``` 
+
+### Settings
+
+`HUMAN_READABLE_DATE` - Format date to more be more readable
+
+`CSV_FORMAT_PARAMS` - Set custom params to read input csv files <https://docs.python.org/3/library/csv.html#csv-fmt-params>
+
+`CURRENCY` - Mapping currencies aliases
+
+`MAPPING` - Mapping and formatting input csv fields
+
+```python
 MAPPING = {
     # Defines handlers names, aliases and custom handler types
     'handlers': {
@@ -90,3 +97,4 @@ MAPPING = {
         }
     }
 }
+```
