@@ -7,9 +7,9 @@ Using this utility you can easily merge multiple .csv files into a single stream
 
 ### Installing and Using
 ```bash
-pip install -r requirements.txt --target csv_merge
+pip install -r requirements.txt --target csvmrg
 
-python csv_merge {path_to_csv_folder} [--output] [--settings]
+python csvmrg {path_to_csv_folder} [--output] [--settings]
 ``` 
 
 ### Example
