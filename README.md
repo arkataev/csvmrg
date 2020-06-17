@@ -4,6 +4,7 @@ Using this utility you can easily merge multiple .csv files into a single stream
 
 ### Requirements
 * Python 3.7
+* python-dateutil==2.8.1
 
 ### Installing and Using
 ```bash
